@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d90c59cbd95c422f994b12471fc546f2" Name="Diagram1" ZoomLevel="63" ShowGrid="false" SnapToGrid="true" DisplayType="false">
+        <EntityTypeShape EntityType="SPRdbModel.Candidate" Width="1.5" PointX="6.25" PointY="1.25" />
+        <EntityTypeShape EntityType="SPRdbModel.Gender" Width="1.5" PointX="0.75" PointY="3.25" />
+        <EntityTypeShape EntityType="SPRdbModel.HotelContract" Width="1.5" PointX="3.375" PointY="6.875" />
+        <EntityTypeShape EntityType="SPRdbModel.HotelContractInvoice" Width="1.5" PointX="14" PointY="6.25" />
+        <EntityTypeShape EntityType="SPRdbModel.HotelInvoice" Width="1.5" PointX="8.25" PointY="1.5" />
+        <EntityTypeShape EntityType="SPRdbModel.HotelRequestCandidate" Width="1.5" PointX="11.125" PointY="7" />
+        <EntityTypeShape EntityType="SPRdbModel.HotelRequest" Width="1.5" PointX="4.25" PointY="1.5" />
+        <EntityTypeShape EntityType="SPRdbModel.Hotel" Width="1.5" PointX="7.375" PointY="6.25" />
+        <EntityTypeShape EntityType="SPRdbModel.Status" Width="1.5" PointX="0.875" PointY="6.25" />
+        <EntityTypeShape EntityType="SPRdbModel.User" Width="1.5" PointX="0.875" PointY="0.625" />
+        <AssociationConnector Association="SPRdbModel.FK_Candidates_Genders" />
+        <AssociationConnector Association="SPRdbModel.FK_Candidates_Statuses" />
+        <AssociationConnector Association="SPRdbModel.FK_HotelInvoice_Candidates" />
+        <AssociationConnector Association="SPRdbModel.FK_HotelRequestCandidate_Candidates" />
+        <AssociationConnector Association="SPRdbModel.FK_HotelContract_HotelInvoice" />
+        <AssociationConnector Association="SPRdbModel.FK_HotelContractInvoice_HotelContract" />
+        <AssociationConnector Association="SPRdbModel.FK_HotelContractInvoice_HotelInvoice" />
+        <AssociationConnector Association="SPRdbModel.FK_HotelInvoice_HotelRequests" />
+        <AssociationConnector Association="SPRdbModel.FK_HotelInvoice_Hotels" />
+        <AssociationConnector Association="SPRdbModel.FK_HotelRequestCandidate_HotelRequests1" />
+        <AssociationConnector Association="SPRdbModel.FK_HotelRequests_Hotels" />
+        <AssociationConnector Association="SPRdbModel.FK_HotelRequests_Statuses" />
+        <EntityTypeShape EntityType="SPRdbModel.CandidateContract" Width="1.75" PointX="16.125" PointY="3.25" />
+        <EntityTypeShape EntityType="SPRdbModel.CandidateContractInvoice" Width="2.25" PointX="15.75" PointY="0.5" />
+        <EntityTypeShape EntityType="SPRdbModel.CandidateInvoice" Width="2" PointX="12.875" PointY="1.125" />
+        <AssociationConnector Association="SPRdbModel.FK_CandidateContract_CandidateContractInvoice" />
+        <AssociationConnector Association="SPRdbModel.FK_CandidateContractInvoice_CandidateInvoice" />
+        <AssociationConnector Association="SPRdbModel.FK_CandidateInvoice_Candidates" />
+        <AssociationConnector Association="SPRdbModel.FK_CandidateInvoice_HotelRequests" />
+        <AssociationConnector Association="SPRdbModel.FK_CandidateInvoice_Hotels" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,1064 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SPRdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CandidateContract">
+          <Key>
+            <PropertyRef Name="CandidateContractID" />
+          </Key>
+          <Property Name="CandidateContractID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CCID" Type="int" />
+          <Property Name="TotalAmount" Type="float" />
+          <Property Name="StatementDate" Type="date" />
+        </EntityType>
+        <EntityType Name="CandidateContractInvoice">
+          <Key>
+            <PropertyRef Name="CCID" />
+          </Key>
+          <Property Name="CCID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceID" Type="int" />
+          <Property Name="CandidateContractID" Type="int" />
+        </EntityType>
+        <EntityType Name="CandidateInvoice">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+          </Key>
+          <Property Name="InvoiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceNum" Type="int" />
+          <Property Name="CandidateID" Type="int" />
+          <Property Name="HotelID" Type="int" />
+          <Property Name="CCID" Type="int" />
+          <Property Name="InvoiceDate" Type="date" />
+          <Property Name="TotalAmount" Type="float" />
+          <Property Name="PaymentMethod" Type="nvarchar" MaxLength="50" />
+          <Property Name="HotelRequestID" Type="int" />
+          <Property Name="Summary" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Candidates">
+          <Key>
+            <PropertyRef Name="CandidateID" />
+          </Key>
+          <Property Name="CandidateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusID" Type="int" />
+          <Property Name="GenderID" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="HourlyRate" Type="float" />
+          <Property Name="Readiness" Type="nvarchar" MaxLength="50" />
+          <Property Name="JoiningDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Genders">
+          <Key>
+            <PropertyRef Name="GenderID" />
+          </Key>
+          <Property Name="GenderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="HotelContract">
+          <Key>
+            <PropertyRef Name="HotelContractID" />
+          </Key>
+          <Property Name="HotelContractID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceID" Type="int" />
+          <Property Name="TotalAmount" Type="float" />
+          <Property Name="StatementDate" Type="date" />
+        </EntityType>
+        <EntityType Name="HotelContractInvoice">
+          <Key>
+            <PropertyRef Name="HotelContractInvoiceID" />
+          </Key>
+          <Property Name="HotelContractInvoiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HotelContractID" Type="int" />
+          <Property Name="InvoiceID" Type="int" />
+        </EntityType>
+        <EntityType Name="HotelInvoice">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+          </Key>
+          <Property Name="InvoiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HotelID" Type="int" />
+          <Property Name="CandidateID" Type="int" />
+          <Property Name="HotelRequestID" Type="int" />
+          <Property Name="InvoiceNumber" Type="int" />
+          <Property Name="SummaryDescription" Type="nvarchar" MaxLength="500" />
+          <Property Name="DateOfInvoice" Type="date" />
+          <Property Name="TotalAmount" Type="float" />
+          <Property Name="PaymentMethod" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="HotelRequestCandidate">
+          <Key>
+            <PropertyRef Name="HotelRequestCandidateID" />
+          </Key>
+          <Property Name="HotelRequestCandidateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hotelRequestID" Type="int" />
+          <Property Name="CandidateID" Type="int" />
+        </EntityType>
+        <EntityType Name="HotelRequests">
+          <Key>
+            <PropertyRef Name="HotelRequestID" />
+          </Key>
+          <Property Name="HotelRequestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HotelID" Type="int" />
+          <Property Name="NumberOfCandidates" Type="int" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="HoursNeeded" Type="nvarchar" MaxLength="50" />
+          <Property Name="RequestDate" Type="date" />
+          <Property Name="Speciality" Type="nvarchar" MaxLength="50" />
+          <Property Name="StatusID" Type="int" />
+        </EntityType>
+        <EntityType Name="Hotels">
+          <Key>
+            <PropertyRef Name="HotelID" />
+          </Key>
+          <Property Name="HotelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusID" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="Address" Type="nvarchar" MaxLength="900" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Statuses">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_CandidateContract_CandidateContractInvoice">
+          <End Role="CandidateContractInvoice" Type="Self.CandidateContractInvoice" Multiplicity="0..1" />
+          <End Role="CandidateContract" Type="Self.CandidateContract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CandidateContractInvoice">
+              <PropertyRef Name="CCID" />
+            </Principal>
+            <Dependent Role="CandidateContract">
+              <PropertyRef Name="CCID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateContractInvoice_CandidateInvoice">
+          <End Role="CandidateInvoice" Type="Self.CandidateInvoice" Multiplicity="0..1" />
+          <End Role="CandidateContractInvoice" Type="Self.CandidateContractInvoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CandidateInvoice">
+              <PropertyRef Name="InvoiceID" />
+            </Principal>
+            <Dependent Role="CandidateContractInvoice">
+              <PropertyRef Name="InvoiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateInvoice_Candidates">
+          <End Role="Candidates" Type="Self.Candidates" Multiplicity="0..1" />
+          <End Role="CandidateInvoice" Type="Self.CandidateInvoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidates">
+              <PropertyRef Name="CandidateID" />
+            </Principal>
+            <Dependent Role="CandidateInvoice">
+              <PropertyRef Name="CandidateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateInvoice_HotelRequests">
+          <End Role="HotelRequests" Type="Self.HotelRequests" Multiplicity="0..1" />
+          <End Role="CandidateInvoice" Type="Self.CandidateInvoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelRequests">
+              <PropertyRef Name="HotelRequestID" />
+            </Principal>
+            <Dependent Role="CandidateInvoice">
+              <PropertyRef Name="HotelRequestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateInvoice_Hotels">
+          <End Role="Hotels" Type="Self.Hotels" Multiplicity="0..1" />
+          <End Role="CandidateInvoice" Type="Self.CandidateInvoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hotels">
+              <PropertyRef Name="HotelID" />
+            </Principal>
+            <Dependent Role="CandidateInvoice">
+              <PropertyRef Name="HotelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidates_Genders">
+          <End Role="Genders" Type="Self.Genders" Multiplicity="0..1" />
+          <End Role="Candidates" Type="Self.Candidates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genders">
+              <PropertyRef Name="GenderID" />
+            </Principal>
+            <Dependent Role="Candidates">
+              <PropertyRef Name="GenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidates_Statuses">
+          <End Role="Statuses" Type="Self.Statuses" Multiplicity="0..1" />
+          <End Role="Candidates" Type="Self.Candidates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statuses">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Candidates">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelContract_HotelInvoice">
+          <End Role="HotelInvoice" Type="Self.HotelInvoice" Multiplicity="0..1" />
+          <End Role="HotelContract" Type="Self.HotelContract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelInvoice">
+              <PropertyRef Name="InvoiceID" />
+            </Principal>
+            <Dependent Role="HotelContract">
+              <PropertyRef Name="InvoiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelContractInvoice_HotelContract">
+          <End Role="HotelContract" Type="Self.HotelContract" Multiplicity="0..1" />
+          <End Role="HotelContractInvoice" Type="Self.HotelContractInvoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelContract">
+              <PropertyRef Name="HotelContractID" />
+            </Principal>
+            <Dependent Role="HotelContractInvoice">
+              <PropertyRef Name="HotelContractID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelContractInvoice_HotelInvoice">
+          <End Role="HotelInvoice" Type="Self.HotelInvoice" Multiplicity="0..1" />
+          <End Role="HotelContractInvoice" Type="Self.HotelContractInvoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelInvoice">
+              <PropertyRef Name="InvoiceID" />
+            </Principal>
+            <Dependent Role="HotelContractInvoice">
+              <PropertyRef Name="InvoiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelInvoice_Candidates">
+          <End Role="Candidates" Type="Self.Candidates" Multiplicity="0..1" />
+          <End Role="HotelInvoice" Type="Self.HotelInvoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidates">
+              <PropertyRef Name="CandidateID" />
+            </Principal>
+            <Dependent Role="HotelInvoice">
+              <PropertyRef Name="CandidateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelInvoice_HotelRequests">
+          <End Role="HotelRequests" Type="Self.HotelRequests" Multiplicity="0..1" />
+          <End Role="HotelInvoice" Type="Self.HotelInvoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelRequests">
+              <PropertyRef Name="HotelRequestID" />
+            </Principal>
+            <Dependent Role="HotelInvoice">
+              <PropertyRef Name="HotelRequestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelInvoice_Hotels">
+          <End Role="Hotels" Type="Self.Hotels" Multiplicity="0..1" />
+          <End Role="HotelInvoice" Type="Self.HotelInvoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hotels">
+              <PropertyRef Name="HotelID" />
+            </Principal>
+            <Dependent Role="HotelInvoice">
+              <PropertyRef Name="HotelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelRequestCandidate_Candidates">
+          <End Role="Candidates" Type="Self.Candidates" Multiplicity="0..1" />
+          <End Role="HotelRequestCandidate" Type="Self.HotelRequestCandidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidates">
+              <PropertyRef Name="CandidateID" />
+            </Principal>
+            <Dependent Role="HotelRequestCandidate">
+              <PropertyRef Name="CandidateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelRequestCandidate_HotelRequests1">
+          <End Role="HotelRequests" Type="Self.HotelRequests" Multiplicity="0..1" />
+          <End Role="HotelRequestCandidate" Type="Self.HotelRequestCandidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelRequests">
+              <PropertyRef Name="HotelRequestID" />
+            </Principal>
+            <Dependent Role="HotelRequestCandidate">
+              <PropertyRef Name="hotelRequestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelRequests_Hotels">
+          <End Role="Hotels" Type="Self.Hotels" Multiplicity="0..1" />
+          <End Role="HotelRequests" Type="Self.HotelRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hotels">
+              <PropertyRef Name="HotelID" />
+            </Principal>
+            <Dependent Role="HotelRequests">
+              <PropertyRef Name="HotelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelRequests_Statuses">
+          <End Role="Statuses" Type="Self.Statuses" Multiplicity="0..1" />
+          <End Role="HotelRequests" Type="Self.HotelRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statuses">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="HotelRequests">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SPRdbModelStoreContainer">
+          <EntitySet Name="CandidateContract" EntityType="Self.CandidateContract" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CandidateContractInvoice" EntityType="Self.CandidateContractInvoice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CandidateInvoice" EntityType="Self.CandidateInvoice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Candidates" EntityType="Self.Candidates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genders" EntityType="Self.Genders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelContract" EntityType="Self.HotelContract" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelContractInvoice" EntityType="Self.HotelContractInvoice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelInvoice" EntityType="Self.HotelInvoice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelRequestCandidate" EntityType="Self.HotelRequestCandidate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelRequests" EntityType="Self.HotelRequests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hotels" EntityType="Self.Hotels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Statuses" EntityType="Self.Statuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CandidateContract_CandidateContractInvoice" Association="Self.FK_CandidateContract_CandidateContractInvoice">
+            <End Role="CandidateContractInvoice" EntitySet="CandidateContractInvoice" />
+            <End Role="CandidateContract" EntitySet="CandidateContract" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateContractInvoice_CandidateInvoice" Association="Self.FK_CandidateContractInvoice_CandidateInvoice">
+            <End Role="CandidateInvoice" EntitySet="CandidateInvoice" />
+            <End Role="CandidateContractInvoice" EntitySet="CandidateContractInvoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateInvoice_Candidates" Association="Self.FK_CandidateInvoice_Candidates">
+            <End Role="Candidates" EntitySet="Candidates" />
+            <End Role="CandidateInvoice" EntitySet="CandidateInvoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateInvoice_HotelRequests" Association="Self.FK_CandidateInvoice_HotelRequests">
+            <End Role="HotelRequests" EntitySet="HotelRequests" />
+            <End Role="CandidateInvoice" EntitySet="CandidateInvoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateInvoice_Hotels" Association="Self.FK_CandidateInvoice_Hotels">
+            <End Role="Hotels" EntitySet="Hotels" />
+            <End Role="CandidateInvoice" EntitySet="CandidateInvoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidates_Genders" Association="Self.FK_Candidates_Genders">
+            <End Role="Genders" EntitySet="Genders" />
+            <End Role="Candidates" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidates_Statuses" Association="Self.FK_Candidates_Statuses">
+            <End Role="Statuses" EntitySet="Statuses" />
+            <End Role="Candidates" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelContract_HotelInvoice" Association="Self.FK_HotelContract_HotelInvoice">
+            <End Role="HotelInvoice" EntitySet="HotelInvoice" />
+            <End Role="HotelContract" EntitySet="HotelContract" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelContractInvoice_HotelContract" Association="Self.FK_HotelContractInvoice_HotelContract">
+            <End Role="HotelContract" EntitySet="HotelContract" />
+            <End Role="HotelContractInvoice" EntitySet="HotelContractInvoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelContractInvoice_HotelInvoice" Association="Self.FK_HotelContractInvoice_HotelInvoice">
+            <End Role="HotelInvoice" EntitySet="HotelInvoice" />
+            <End Role="HotelContractInvoice" EntitySet="HotelContractInvoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelInvoice_Candidates" Association="Self.FK_HotelInvoice_Candidates">
+            <End Role="Candidates" EntitySet="Candidates" />
+            <End Role="HotelInvoice" EntitySet="HotelInvoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelInvoice_HotelRequests" Association="Self.FK_HotelInvoice_HotelRequests">
+            <End Role="HotelRequests" EntitySet="HotelRequests" />
+            <End Role="HotelInvoice" EntitySet="HotelInvoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelInvoice_Hotels" Association="Self.FK_HotelInvoice_Hotels">
+            <End Role="Hotels" EntitySet="Hotels" />
+            <End Role="HotelInvoice" EntitySet="HotelInvoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelRequestCandidate_Candidates" Association="Self.FK_HotelRequestCandidate_Candidates">
+            <End Role="Candidates" EntitySet="Candidates" />
+            <End Role="HotelRequestCandidate" EntitySet="HotelRequestCandidate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelRequestCandidate_HotelRequests1" Association="Self.FK_HotelRequestCandidate_HotelRequests1">
+            <End Role="HotelRequests" EntitySet="HotelRequests" />
+            <End Role="HotelRequestCandidate" EntitySet="HotelRequestCandidate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelRequests_Hotels" Association="Self.FK_HotelRequests_Hotels">
+            <End Role="Hotels" EntitySet="Hotels" />
+            <End Role="HotelRequests" EntitySet="HotelRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelRequests_Statuses" Association="Self.FK_HotelRequests_Statuses">
+            <End Role="Statuses" EntitySet="Statuses" />
+            <End Role="HotelRequests" EntitySet="HotelRequests" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SPRdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SPRdbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Candidates" EntityType="SPRdbModel.Candidate" />
+          <EntitySet Name="Genders" EntityType="SPRdbModel.Gender" />
+          <EntitySet Name="HotelContracts" EntityType="SPRdbModel.HotelContract" />
+          <EntitySet Name="HotelContractInvoices" EntityType="SPRdbModel.HotelContractInvoice" />
+          <EntitySet Name="HotelInvoices" EntityType="SPRdbModel.HotelInvoice" />
+          <EntitySet Name="HotelRequestCandidates" EntityType="SPRdbModel.HotelRequestCandidate" />
+          <EntitySet Name="HotelRequests" EntityType="SPRdbModel.HotelRequest" />
+          <EntitySet Name="Hotels" EntityType="SPRdbModel.Hotel" />
+          <EntitySet Name="Statuses" EntityType="SPRdbModel.Status" />
+          <EntitySet Name="Users" EntityType="SPRdbModel.User" />
+          <AssociationSet Name="FK_Candidates_Genders" Association="SPRdbModel.FK_Candidates_Genders">
+            <End Role="Gender" EntitySet="Genders" />
+            <End Role="Candidate" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidates_Statuses" Association="SPRdbModel.FK_Candidates_Statuses">
+            <End Role="Status" EntitySet="Statuses" />
+            <End Role="Candidate" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelInvoice_Candidates" Association="SPRdbModel.FK_HotelInvoice_Candidates">
+            <End Role="Candidate" EntitySet="Candidates" />
+            <End Role="HotelInvoice" EntitySet="HotelInvoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelRequestCandidate_Candidates" Association="SPRdbModel.FK_HotelRequestCandidate_Candidates">
+            <End Role="Candidate" EntitySet="Candidates" />
+            <End Role="HotelRequestCandidate" EntitySet="HotelRequestCandidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelContract_HotelInvoice" Association="SPRdbModel.FK_HotelContract_HotelInvoice">
+            <End Role="HotelInvoice" EntitySet="HotelInvoices" />
+            <End Role="HotelContract" EntitySet="HotelContracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelContractInvoice_HotelContract" Association="SPRdbModel.FK_HotelContractInvoice_HotelContract">
+            <End Role="HotelContract" EntitySet="HotelContracts" />
+            <End Role="HotelContractInvoice" EntitySet="HotelContractInvoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelContractInvoice_HotelInvoice" Association="SPRdbModel.FK_HotelContractInvoice_HotelInvoice">
+            <End Role="HotelInvoice" EntitySet="HotelInvoices" />
+            <End Role="HotelContractInvoice" EntitySet="HotelContractInvoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelInvoice_HotelRequests" Association="SPRdbModel.FK_HotelInvoice_HotelRequests">
+            <End Role="HotelRequest" EntitySet="HotelRequests" />
+            <End Role="HotelInvoice" EntitySet="HotelInvoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelInvoice_Hotels" Association="SPRdbModel.FK_HotelInvoice_Hotels">
+            <End Role="Hotel" EntitySet="Hotels" />
+            <End Role="HotelInvoice" EntitySet="HotelInvoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelRequestCandidate_HotelRequests1" Association="SPRdbModel.FK_HotelRequestCandidate_HotelRequests1">
+            <End Role="HotelRequest" EntitySet="HotelRequests" />
+            <End Role="HotelRequestCandidate" EntitySet="HotelRequestCandidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelRequests_Hotels" Association="SPRdbModel.FK_HotelRequests_Hotels">
+            <End Role="Hotel" EntitySet="Hotels" />
+            <End Role="HotelRequest" EntitySet="HotelRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelRequests_Statuses" Association="SPRdbModel.FK_HotelRequests_Statuses">
+            <End Role="Status" EntitySet="Statuses" />
+            <End Role="HotelRequest" EntitySet="HotelRequests" />
+          </AssociationSet>
+          <EntitySet Name="CandidateContracts" EntityType="SPRdbModel.CandidateContract" />
+          <EntitySet Name="CandidateContractInvoices" EntityType="SPRdbModel.CandidateContractInvoice" />
+          <EntitySet Name="CandidateInvoices" EntityType="SPRdbModel.CandidateInvoice" />
+          <AssociationSet Name="FK_CandidateContract_CandidateContractInvoice" Association="SPRdbModel.FK_CandidateContract_CandidateContractInvoice">
+            <End Role="CandidateContractInvoice" EntitySet="CandidateContractInvoices" />
+            <End Role="CandidateContract" EntitySet="CandidateContracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateContractInvoice_CandidateInvoice" Association="SPRdbModel.FK_CandidateContractInvoice_CandidateInvoice">
+            <End Role="CandidateInvoice" EntitySet="CandidateInvoices" />
+            <End Role="CandidateContractInvoice" EntitySet="CandidateContractInvoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateInvoice_Candidates" Association="SPRdbModel.FK_CandidateInvoice_Candidates">
+            <End Role="Candidate" EntitySet="Candidates" />
+            <End Role="CandidateInvoice" EntitySet="CandidateInvoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateInvoice_HotelRequests" Association="SPRdbModel.FK_CandidateInvoice_HotelRequests">
+            <End Role="HotelRequest" EntitySet="HotelRequests" />
+            <End Role="CandidateInvoice" EntitySet="CandidateInvoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateInvoice_Hotels" Association="SPRdbModel.FK_CandidateInvoice_Hotels">
+            <End Role="Hotel" EntitySet="Hotels" />
+            <End Role="CandidateInvoice" EntitySet="CandidateInvoices" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Candidate">
+          <Key>
+            <PropertyRef Name="CandidateID" />
+          </Key>
+          <Property Name="CandidateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusID" Type="Int32" />
+          <Property Name="GenderID" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="HourlyRate" Type="Double" />
+          <Property Name="Readiness" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JoiningDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Gender" Relationship="SPRdbModel.FK_Candidates_Genders" FromRole="Candidate" ToRole="Gender" />
+          <NavigationProperty Name="Status" Relationship="SPRdbModel.FK_Candidates_Statuses" FromRole="Candidate" ToRole="Status" />
+          <NavigationProperty Name="HotelInvoices" Relationship="SPRdbModel.FK_HotelInvoice_Candidates" FromRole="Candidate" ToRole="HotelInvoice" />
+          <NavigationProperty Name="HotelRequestCandidates" Relationship="SPRdbModel.FK_HotelRequestCandidate_Candidates" FromRole="Candidate" ToRole="HotelRequestCandidate" />
+          <NavigationProperty Name="CandidateInvoices" Relationship="SPRdbModel.FK_CandidateInvoice_Candidates" FromRole="Candidate" ToRole="CandidateInvoice" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="GenderID" />
+          </Key>
+          <Property Name="GenderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Candidates" Relationship="SPRdbModel.FK_Candidates_Genders" FromRole="Gender" ToRole="Candidate" />
+        </EntityType>
+        <EntityType Name="HotelContract">
+          <Key>
+            <PropertyRef Name="HotelContractID" />
+          </Key>
+          <Property Name="HotelContractID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceID" Type="Int32" />
+          <Property Name="TotalAmount" Type="Double" />
+          <Property Name="StatementDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="HotelInvoice" Relationship="SPRdbModel.FK_HotelContract_HotelInvoice" FromRole="HotelContract" ToRole="HotelInvoice" />
+          <NavigationProperty Name="HotelContractInvoices" Relationship="SPRdbModel.FK_HotelContractInvoice_HotelContract" FromRole="HotelContract" ToRole="HotelContractInvoice" />
+        </EntityType>
+        <EntityType Name="HotelContractInvoice">
+          <Key>
+            <PropertyRef Name="HotelContractInvoiceID" />
+          </Key>
+          <Property Name="HotelContractInvoiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HotelContractID" Type="Int32" />
+          <Property Name="InvoiceID" Type="Int32" />
+          <NavigationProperty Name="HotelContract" Relationship="SPRdbModel.FK_HotelContractInvoice_HotelContract" FromRole="HotelContractInvoice" ToRole="HotelContract" />
+          <NavigationProperty Name="HotelInvoice" Relationship="SPRdbModel.FK_HotelContractInvoice_HotelInvoice" FromRole="HotelContractInvoice" ToRole="HotelInvoice" />
+        </EntityType>
+        <EntityType Name="HotelInvoice">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+          </Key>
+          <Property Name="InvoiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HotelID" Type="Int32" />
+          <Property Name="CandidateID" Type="Int32" />
+          <Property Name="HotelRequestID" Type="Int32" />
+          <Property Name="InvoiceNumber" Type="Int32" />
+          <Property Name="SummaryDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfInvoice" Type="DateTime" Precision="0" />
+          <Property Name="TotalAmount" Type="Double" />
+          <Property Name="PaymentMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Candidate" Relationship="SPRdbModel.FK_HotelInvoice_Candidates" FromRole="HotelInvoice" ToRole="Candidate" />
+          <NavigationProperty Name="HotelContracts" Relationship="SPRdbModel.FK_HotelContract_HotelInvoice" FromRole="HotelInvoice" ToRole="HotelContract" />
+          <NavigationProperty Name="HotelContractInvoices" Relationship="SPRdbModel.FK_HotelContractInvoice_HotelInvoice" FromRole="HotelInvoice" ToRole="HotelContractInvoice" />
+          <NavigationProperty Name="HotelRequest" Relationship="SPRdbModel.FK_HotelInvoice_HotelRequests" FromRole="HotelInvoice" ToRole="HotelRequest" />
+          <NavigationProperty Name="Hotel" Relationship="SPRdbModel.FK_HotelInvoice_Hotels" FromRole="HotelInvoice" ToRole="Hotel" />
+        </EntityType>
+        <EntityType Name="HotelRequestCandidate">
+          <Key>
+            <PropertyRef Name="HotelRequestCandidateID" />
+          </Key>
+          <Property Name="HotelRequestCandidateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hotelRequestID" Type="Int32" />
+          <Property Name="CandidateID" Type="Int32" />
+          <NavigationProperty Name="Candidate" Relationship="SPRdbModel.FK_HotelRequestCandidate_Candidates" FromRole="HotelRequestCandidate" ToRole="Candidate" />
+          <NavigationProperty Name="HotelRequest" Relationship="SPRdbModel.FK_HotelRequestCandidate_HotelRequests1" FromRole="HotelRequestCandidate" ToRole="HotelRequest" />
+        </EntityType>
+        <EntityType Name="HotelRequest">
+          <Key>
+            <PropertyRef Name="HotelRequestID" />
+          </Key>
+          <Property Name="HotelRequestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HotelID" Type="Int32" />
+          <Property Name="NumberOfCandidates" Type="Int32" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="HoursNeeded" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RequestDate" Type="DateTime" Precision="0" />
+          <Property Name="Speciality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StatusID" Type="Int32" />
+          <NavigationProperty Name="HotelInvoices" Relationship="SPRdbModel.FK_HotelInvoice_HotelRequests" FromRole="HotelRequest" ToRole="HotelInvoice" />
+          <NavigationProperty Name="HotelRequestCandidates" Relationship="SPRdbModel.FK_HotelRequestCandidate_HotelRequests1" FromRole="HotelRequest" ToRole="HotelRequestCandidate" />
+          <NavigationProperty Name="Hotel" Relationship="SPRdbModel.FK_HotelRequests_Hotels" FromRole="HotelRequest" ToRole="Hotel" />
+          <NavigationProperty Name="Status" Relationship="SPRdbModel.FK_HotelRequests_Statuses" FromRole="HotelRequest" ToRole="Status" />
+          <NavigationProperty Name="CandidateInvoices" Relationship="SPRdbModel.FK_CandidateInvoice_HotelRequests" FromRole="HotelRequest" ToRole="CandidateInvoice" />
+        </EntityType>
+        <EntityType Name="Hotel">
+          <Key>
+            <PropertyRef Name="HotelID" />
+          </Key>
+          <Property Name="HotelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusID" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="900" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HotelInvoices" Relationship="SPRdbModel.FK_HotelInvoice_Hotels" FromRole="Hotel" ToRole="HotelInvoice" />
+          <NavigationProperty Name="HotelRequests" Relationship="SPRdbModel.FK_HotelRequests_Hotels" FromRole="Hotel" ToRole="HotelRequest" />
+          <NavigationProperty Name="CandidateInvoices" Relationship="SPRdbModel.FK_CandidateInvoice_Hotels" FromRole="Hotel" ToRole="CandidateInvoice" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Candidates" Relationship="SPRdbModel.FK_Candidates_Statuses" FromRole="Status" ToRole="Candidate" />
+          <NavigationProperty Name="HotelRequests" Relationship="SPRdbModel.FK_HotelRequests_Statuses" FromRole="Status" ToRole="HotelRequest" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Candidates_Genders">
+          <End Type="SPRdbModel.Gender" Role="Gender" Multiplicity="0..1" />
+          <End Type="SPRdbModel.Candidate" Role="Candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="GenderID" />
+            </Principal>
+            <Dependent Role="Candidate">
+              <PropertyRef Name="GenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidates_Statuses">
+          <End Type="SPRdbModel.Status" Role="Status" Multiplicity="0..1" />
+          <End Type="SPRdbModel.Candidate" Role="Candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Candidate">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelInvoice_Candidates">
+          <End Type="SPRdbModel.Candidate" Role="Candidate" Multiplicity="0..1" />
+          <End Type="SPRdbModel.HotelInvoice" Role="HotelInvoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidate">
+              <PropertyRef Name="CandidateID" />
+            </Principal>
+            <Dependent Role="HotelInvoice">
+              <PropertyRef Name="CandidateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelRequestCandidate_Candidates">
+          <End Type="SPRdbModel.Candidate" Role="Candidate" Multiplicity="0..1" />
+          <End Type="SPRdbModel.HotelRequestCandidate" Role="HotelRequestCandidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidate">
+              <PropertyRef Name="CandidateID" />
+            </Principal>
+            <Dependent Role="HotelRequestCandidate">
+              <PropertyRef Name="CandidateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelContract_HotelInvoice">
+          <End Type="SPRdbModel.HotelInvoice" Role="HotelInvoice" Multiplicity="0..1" />
+          <End Type="SPRdbModel.HotelContract" Role="HotelContract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelInvoice">
+              <PropertyRef Name="InvoiceID" />
+            </Principal>
+            <Dependent Role="HotelContract">
+              <PropertyRef Name="InvoiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelContractInvoice_HotelContract">
+          <End Type="SPRdbModel.HotelContract" Role="HotelContract" Multiplicity="0..1" />
+          <End Type="SPRdbModel.HotelContractInvoice" Role="HotelContractInvoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelContract">
+              <PropertyRef Name="HotelContractID" />
+            </Principal>
+            <Dependent Role="HotelContractInvoice">
+              <PropertyRef Name="HotelContractID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelContractInvoice_HotelInvoice">
+          <End Type="SPRdbModel.HotelInvoice" Role="HotelInvoice" Multiplicity="0..1" />
+          <End Type="SPRdbModel.HotelContractInvoice" Role="HotelContractInvoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelInvoice">
+              <PropertyRef Name="InvoiceID" />
+            </Principal>
+            <Dependent Role="HotelContractInvoice">
+              <PropertyRef Name="InvoiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelInvoice_HotelRequests">
+          <End Type="SPRdbModel.HotelRequest" Role="HotelRequest" Multiplicity="0..1" />
+          <End Type="SPRdbModel.HotelInvoice" Role="HotelInvoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelRequest">
+              <PropertyRef Name="HotelRequestID" />
+            </Principal>
+            <Dependent Role="HotelInvoice">
+              <PropertyRef Name="HotelRequestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelInvoice_Hotels">
+          <End Type="SPRdbModel.Hotel" Role="Hotel" Multiplicity="0..1" />
+          <End Type="SPRdbModel.HotelInvoice" Role="HotelInvoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hotel">
+              <PropertyRef Name="HotelID" />
+            </Principal>
+            <Dependent Role="HotelInvoice">
+              <PropertyRef Name="HotelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelRequestCandidate_HotelRequests1">
+          <End Type="SPRdbModel.HotelRequest" Role="HotelRequest" Multiplicity="0..1" />
+          <End Type="SPRdbModel.HotelRequestCandidate" Role="HotelRequestCandidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelRequest">
+              <PropertyRef Name="HotelRequestID" />
+            </Principal>
+            <Dependent Role="HotelRequestCandidate">
+              <PropertyRef Name="hotelRequestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelRequests_Hotels">
+          <End Type="SPRdbModel.Hotel" Role="Hotel" Multiplicity="0..1" />
+          <End Type="SPRdbModel.HotelRequest" Role="HotelRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hotel">
+              <PropertyRef Name="HotelID" />
+            </Principal>
+            <Dependent Role="HotelRequest">
+              <PropertyRef Name="HotelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelRequests_Statuses">
+          <End Type="SPRdbModel.Status" Role="Status" Multiplicity="0..1" />
+          <End Type="SPRdbModel.HotelRequest" Role="HotelRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="HotelRequest">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CandidateContract">
+          <Key>
+            <PropertyRef Name="CandidateContractID" />
+          </Key>
+          <Property Name="CandidateContractID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CCID" Type="Int32" />
+          <Property Name="TotalAmount" Type="Double" />
+          <Property Name="StatementDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="CandidateContractInvoice" Relationship="SPRdbModel.FK_CandidateContract_CandidateContractInvoice" FromRole="CandidateContract" ToRole="CandidateContractInvoice" />
+        </EntityType>
+        <EntityType Name="CandidateContractInvoice">
+          <Key>
+            <PropertyRef Name="CCID" />
+          </Key>
+          <Property Name="CCID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceID" Type="Int32" />
+          <Property Name="CandidateContractID" Type="Int32" />
+          <NavigationProperty Name="CandidateContracts" Relationship="SPRdbModel.FK_CandidateContract_CandidateContractInvoice" FromRole="CandidateContractInvoice" ToRole="CandidateContract" />
+          <NavigationProperty Name="CandidateInvoice" Relationship="SPRdbModel.FK_CandidateContractInvoice_CandidateInvoice" FromRole="CandidateContractInvoice" ToRole="CandidateInvoice" />
+        </EntityType>
+        <EntityType Name="CandidateInvoice">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+          </Key>
+          <Property Name="InvoiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceNum" Type="Int32" />
+          <Property Name="CandidateID" Type="Int32" />
+          <Property Name="HotelID" Type="Int32" />
+          <Property Name="CCID" Type="Int32" />
+          <Property Name="InvoiceDate" Type="DateTime" Precision="0" />
+          <Property Name="TotalAmount" Type="Double" />
+          <Property Name="PaymentMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HotelRequestID" Type="Int32" />
+          <Property Name="Summary" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CandidateContractInvoices" Relationship="SPRdbModel.FK_CandidateContractInvoice_CandidateInvoice" FromRole="CandidateInvoice" ToRole="CandidateContractInvoice" />
+          <NavigationProperty Name="Candidate" Relationship="SPRdbModel.FK_CandidateInvoice_Candidates" FromRole="CandidateInvoice" ToRole="Candidate" />
+          <NavigationProperty Name="HotelRequest" Relationship="SPRdbModel.FK_CandidateInvoice_HotelRequests" FromRole="CandidateInvoice" ToRole="HotelRequest" />
+          <NavigationProperty Name="Hotel" Relationship="SPRdbModel.FK_CandidateInvoice_Hotels" FromRole="CandidateInvoice" ToRole="Hotel" />
+        </EntityType>
+        <Association Name="FK_CandidateContract_CandidateContractInvoice">
+          <End Type="SPRdbModel.CandidateContractInvoice" Role="CandidateContractInvoice" Multiplicity="0..1" />
+          <End Type="SPRdbModel.CandidateContract" Role="CandidateContract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CandidateContractInvoice">
+              <PropertyRef Name="CCID" />
+            </Principal>
+            <Dependent Role="CandidateContract">
+              <PropertyRef Name="CCID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateContractInvoice_CandidateInvoice">
+          <End Type="SPRdbModel.CandidateInvoice" Role="CandidateInvoice" Multiplicity="0..1" />
+          <End Type="SPRdbModel.CandidateContractInvoice" Role="CandidateContractInvoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CandidateInvoice">
+              <PropertyRef Name="InvoiceID" />
+            </Principal>
+            <Dependent Role="CandidateContractInvoice">
+              <PropertyRef Name="InvoiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateInvoice_Candidates">
+          <End Type="SPRdbModel.Candidate" Role="Candidate" Multiplicity="0..1" />
+          <End Type="SPRdbModel.CandidateInvoice" Role="CandidateInvoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidate">
+              <PropertyRef Name="CandidateID" />
+            </Principal>
+            <Dependent Role="CandidateInvoice">
+              <PropertyRef Name="CandidateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateInvoice_HotelRequests">
+          <End Type="SPRdbModel.HotelRequest" Role="HotelRequest" Multiplicity="0..1" />
+          <End Type="SPRdbModel.CandidateInvoice" Role="CandidateInvoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelRequest">
+              <PropertyRef Name="HotelRequestID" />
+            </Principal>
+            <Dependent Role="CandidateInvoice">
+              <PropertyRef Name="HotelRequestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateInvoice_Hotels">
+          <End Type="SPRdbModel.Hotel" Role="Hotel" Multiplicity="0..1" />
+          <End Type="SPRdbModel.CandidateInvoice" Role="CandidateInvoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hotel">
+              <PropertyRef Name="HotelID" />
+            </Principal>
+            <Dependent Role="CandidateInvoice">
+              <PropertyRef Name="HotelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SPRdbModelStoreContainer" CdmEntityContainer="SPRdbEntities">
+          <EntitySetMapping Name="Candidates">
+            <EntityTypeMapping TypeName="SPRdbModel.Candidate">
+              <MappingFragment StoreEntitySet="Candidates">
+                <ScalarProperty Name="JoiningDate" ColumnName="JoiningDate" />
+                <ScalarProperty Name="Readiness" ColumnName="Readiness" />
+                <ScalarProperty Name="HourlyRate" ColumnName="HourlyRate" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="CandidateID" ColumnName="CandidateID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="SPRdbModel.Gender">
+              <MappingFragment StoreEntitySet="Genders">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelContracts">
+            <EntityTypeMapping TypeName="SPRdbModel.HotelContract">
+              <MappingFragment StoreEntitySet="HotelContract">
+                <ScalarProperty Name="StatementDate" ColumnName="StatementDate" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+                <ScalarProperty Name="HotelContractID" ColumnName="HotelContractID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelContractInvoices">
+            <EntityTypeMapping TypeName="SPRdbModel.HotelContractInvoice">
+              <MappingFragment StoreEntitySet="HotelContractInvoice">
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+                <ScalarProperty Name="HotelContractID" ColumnName="HotelContractID" />
+                <ScalarProperty Name="HotelContractInvoiceID" ColumnName="HotelContractInvoiceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelInvoices">
+            <EntityTypeMapping TypeName="SPRdbModel.HotelInvoice">
+              <MappingFragment StoreEntitySet="HotelInvoice">
+                <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="DateOfInvoice" ColumnName="DateOfInvoice" />
+                <ScalarProperty Name="SummaryDescription" ColumnName="SummaryDescription" />
+                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+                <ScalarProperty Name="HotelRequestID" ColumnName="HotelRequestID" />
+                <ScalarProperty Name="CandidateID" ColumnName="CandidateID" />
+                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelRequestCandidates">
+            <EntityTypeMapping TypeName="SPRdbModel.HotelRequestCandidate">
+              <MappingFragment StoreEntitySet="HotelRequestCandidate">
+                <ScalarProperty Name="CandidateID" ColumnName="CandidateID" />
+                <ScalarProperty Name="hotelRequestID" ColumnName="hotelRequestID" />
+                <ScalarProperty Name="HotelRequestCandidateID" ColumnName="HotelRequestCandidateID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelRequests">
+            <EntityTypeMapping TypeName="SPRdbModel.HotelRequest">
+              <MappingFragment StoreEntitySet="HotelRequests">
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="Speciality" ColumnName="Speciality" />
+                <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+                <ScalarProperty Name="HoursNeeded" ColumnName="HoursNeeded" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="NumberOfCandidates" ColumnName="NumberOfCandidates" />
+                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+                <ScalarProperty Name="HotelRequestID" ColumnName="HotelRequestID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hotels">
+            <EntityTypeMapping TypeName="SPRdbModel.Hotel">
+              <MappingFragment StoreEntitySet="Hotels">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Statuses">
+            <EntityTypeMapping TypeName="SPRdbModel.Status">
+              <MappingFragment StoreEntitySet="Statuses">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="SPRdbModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CandidateContracts">
+            <EntityTypeMapping TypeName="SPRdbModel.CandidateContract">
+              <MappingFragment StoreEntitySet="CandidateContract">
+                <ScalarProperty Name="StatementDate" ColumnName="StatementDate" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="CCID" ColumnName="CCID" />
+                <ScalarProperty Name="CandidateContractID" ColumnName="CandidateContractID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CandidateContractInvoices">
+            <EntityTypeMapping TypeName="SPRdbModel.CandidateContractInvoice">
+              <MappingFragment StoreEntitySet="CandidateContractInvoice">
+                <ScalarProperty Name="CandidateContractID" ColumnName="CandidateContractID" />
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+                <ScalarProperty Name="CCID" ColumnName="CCID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CandidateInvoices">
+            <EntityTypeMapping TypeName="SPRdbModel.CandidateInvoice">
+              <MappingFragment StoreEntitySet="CandidateInvoice">
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="HotelRequestID" ColumnName="HotelRequestID" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="CCID" ColumnName="CCID" />
+                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+                <ScalarProperty Name="CandidateID" ColumnName="CandidateID" />
+                <ScalarProperty Name="InvoiceNum" ColumnName="InvoiceNum" />
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

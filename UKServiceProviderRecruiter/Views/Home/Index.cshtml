@@ -1,0 +1,229 @@
+﻿@model UKServiceProviderRecruiter.Models.DashboardModel
+
+@{
+    // TODO: Consider setting Layout set automatially in _ViewStart.cshtml
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    // EXAMPLE:
+    // Using the ViewBag on a page to set the title and sub-title
+    // This will cause the _AdminLteLayout to include this value in the page title
+    // And also set the top titles in the main content area of the page
+    ViewBag.Title = "Admin sss LTE";
+    ViewBag.TitleSmall = "Version 2.0";
+
+    // EXAMPLE:
+    // Using the Breadcrumb class to create a dynamically generated breadcrumb on the page with
+    // Titles, plus optional icon and URLs
+    ViewBag.Breadcrumb = new Breadcrumb(new Crumb[] {
+        new Crumb("Dashboard", "", "fa-dashboard")
+    });
+}
+
+<!-- Info boxes -->
+<div class="row">
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-aqua"><i class="ion ion-ios-people-outline"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Candidates</span>
+                <span class="info-box-number">@Model.CandidatesCount</span>
+            </div><!-- /.info-box-content -->
+        </div><!-- /.info-box -->
+    </div><!-- /.col -->
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-orange"><i class="fa fa-hotel"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Hotels</span>
+                <span class="info-box-number">@Model.HotelsCount</span>
+            </div><!-- /.info-box-content -->
+        </div><!-- /.info-box -->
+    </div><!-- /.col -->
+    <!-- fix for small devices only -->
+    <div class="clearfix visible-sm-block"></div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-green"><i class="fa fa-arrow-circle-down"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Net Incomes</span>
+                <span class="info-box-number">@Model.Income $</span>
+            </div><!-- /.info-box-content -->
+        </div><!-- /.info-box -->
+    </div><!-- /.col -->
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-red"><i class="fa fa-dollar"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Net Payments</span>
+                <span class="info-box-number">@Model.Payments $</span>
+            </div><!-- /.info-box-content -->
+        </div><!-- /.info-box -->
+    </div><!-- /.col -->
+</div><!-- /.row -->
+<!-- Main row -->
+
+<br />
+<div class="box box-info">
+    <div class="box-header with-border">
+        <h3 class="box-title">@Model.PendingHotelRequestsString</h3>
+
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                <i class="fa fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+
+        <div class="table-responsive">
+            <table class="table no-margin">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Hotel</th>
+                        <th>Status </th>
+                        <th>Number of candidates</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Hours Needed</th>
+                        <th>Speciality</th>
+                        <th>Request Date</th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model.PendingHotelRequests)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HotelRequestID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HotelID)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NumberOfCandidates)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StartDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EndDate)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HoursNeeded)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Speciality)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RequestDate)
+                            </td>
+
+                        </tr>
+                    }
+                    
+                </tbody>
+            </table>
+        </div>
+        <!-- /.table-responsive -->
+    </div>
+
+</div>
+
+<br />
+<div class="box box-info">
+    <div class="box-header with-border">
+        <h3 class="box-title">@Model.ActiveHotelRequestsString</h3>
+
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                <i class="fa fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+
+        <div class="table-responsive">
+            <table class="table no-margin">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Hotel</th>
+                        <th>Status </th>
+                        <th>Number of candidates</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Hours Needed</th>
+                        <th>Speciality</th>
+                        <th>Request Date</th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model.ActiveHotelRequests)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HotelRequestID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HotelID)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NumberOfCandidates)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StartDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EndDate)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HoursNeeded)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Speciality)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RequestDate)
+                            </td>
+
+                        </tr>
+                    }
+                    
+                </tbody>
+            </table>
+        </div>
+        <!-- /.table-responsive -->
+    </div>
+
+</div>
+
+
+@section scripts {
+    @*NOTE: These should NOT be used in a production situation
+        They do contains useful snippets on how to setup charts*@
+    <script src="~/Scripts/AdminLTE/pages/dashboard2.js"></script>
+    <script src="~/Scripts/AdminLTE/demo.js"></script>
+}

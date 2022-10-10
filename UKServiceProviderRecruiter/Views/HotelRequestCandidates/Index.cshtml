@@ -1,0 +1,40 @@
+﻿@model IEnumerable<UKServiceProviderRecruiter.HotelRequestCandidate>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p class="d-flex p-2 bd-highlight">
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-striped table-dark">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                Hours Needed
+            </th>
+            <th>
+                Candidate Name
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.HotelRequest.HoursNeeded)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Candidate.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.HotelRequestCandidateID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.HotelRequestCandidateID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.HotelRequestCandidateID })
+        </td>
+    </tr>
+}
+
+</table>

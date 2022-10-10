@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UKServiceProviderRecruiter", "UKServiceProviderRecruiter\UKServiceProviderRecruiter.csproj", "{F98F9412-6A03-468E-8B79-C5F45AD04820}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminLteUK", "AdminLteUK\AdminLteUK.csproj", "{3400EE50-FA74-47EF-91E7-CE2EB7A93E92}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F98F9412-6A03-468E-8B79-C5F45AD04820}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F98F9412-6A03-468E-8B79-C5F45AD04820}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F98F9412-6A03-468E-8B79-C5F45AD04820}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F98F9412-6A03-468E-8B79-C5F45AD04820}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3400EE50-FA74-47EF-91E7-CE2EB7A93E92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3400EE50-FA74-47EF-91E7-CE2EB7A93E92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3400EE50-FA74-47EF-91E7-CE2EB7A93E92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3400EE50-FA74-47EF-91E7-CE2EB7A93E92}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8A0036DD-6807-4043-8E1E-A36FFF21BACF}
+	EndGlobalSection
+EndGlobal
